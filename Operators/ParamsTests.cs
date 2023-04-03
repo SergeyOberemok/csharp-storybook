@@ -32,5 +32,34 @@ namespace CSharpStorybook.Operators
         {
             return numbers.Sum();
         }
+
+        [Fact]
+        public void TestOutParam()
+        {
+            OutVariableFromFunction(out int result);
+
+            result.Should().BeGreaterThan(0);
+        }
+
+        private void OutVariableFromFunction(out int result)
+        {
+            result = _faker.Random.Int(min: 1);
+        }
+
+        [Fact]
+        public void TestRefParam()
+        {
+            int initialValue = _faker.Random.Int(max: 0);
+            int result = initialValue;
+
+            RefVariableInsideFunction(ref result);
+
+            result.Should().NotBe(initialValue);
+        }
+
+        private void RefVariableInsideFunction(ref int result)
+        {
+            result = _faker.Random.Int(min: 1);
+        }
     }
 }
