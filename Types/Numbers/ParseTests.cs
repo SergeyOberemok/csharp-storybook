@@ -11,6 +11,33 @@ namespace CSharpStorybook.Types.Numbers
         }
 
         [Fact]
+        public void TestIntParseString()
+        {
+            int number = _faker.Random.Number(1, 100);
+            string numberStr = number.ToString();
+
+            int result = int.Parse(numberStr);
+
+            result.Should().Be(number);
+        }
+
+        [Fact]
+        public void TestIntParseEmptyString()
+        {
+            Action act = () => int.Parse(string.Empty);
+            
+            act.Should().Throw<FormatException>();
+        }
+
+        [Fact]
+        public void TestIntParseNull()
+        {
+            Action act = () => int.Parse(null);
+
+            act.Should().Throw<ArgumentNullException>();
+        }
+
+        [Fact]
         public void TestIntTryParseIntString()
         {
             string numberStr = _faker.Random.Number(1, 100).ToString();

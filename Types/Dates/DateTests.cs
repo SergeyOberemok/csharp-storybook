@@ -29,5 +29,25 @@ namespace CSharpStorybook.Types.Dates
 
             overdueCount.Should().BeGreaterThan(0);
         }
+
+        [Fact]
+        public void TestDateAddDays()
+        {
+            DateTime tomorrow = DateTime.Now.AddDays(1);
+
+            bool result = tomorrow > DateTime.Now;
+
+            result.Should().BeTrue();
+        }
+
+        [Fact]
+        public void TestDateSubtractDays()
+        {
+            DateTime yesterday = DateTime.Now.AddDays(-1);
+
+            bool result = yesterday < DateTime.Now;
+
+            result.Should().BeTrue();
+        }
     }
 }
