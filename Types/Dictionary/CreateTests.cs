@@ -2,11 +2,11 @@
 using Xunit;
 using Xunit.Abstractions;
 
-namespace CSharpStorybook.Types.Collections
+namespace CSharpStorybook.Types.Dictionary
 {
-    public class DictionaryTests : TestBase
+    public class CreateTests : TestBase
     {
-        public DictionaryTests(ITestOutputHelper output) : base(output)
+        public CreateTests(ITestOutputHelper output) : base(output)
         {
         }
 

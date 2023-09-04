@@ -5,9 +5,9 @@ using Xunit.Abstractions;
 
 namespace CSharpStorybook.Types.Strings
 {
-    public class ChangeTests : TestBase
+    public class UpdateTests : TestBase
     {
-        public ChangeTests(ITestOutputHelper output) : base(output)
+        public UpdateTests(ITestOutputHelper output) : base(output)
         {
         }
 
