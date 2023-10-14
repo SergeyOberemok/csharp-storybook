@@ -45,13 +45,22 @@ namespace CSharpStorybook.Types.Strings
         }
 
         [Fact]
-        public void TestAtobBase64ToStringConvert()
+        public void TestAtobBase64Decode()
         {
             string base64Encoded = "anVzdHluYQ==";
 
             string base64Decoded = base64Encoded.Atob();
 
+            base64Encoded.Should().NotBe(base64Decoded);
             base64Decoded.Should().Be("justyna");
+        }
+
+        [Fact]
+        public void TestAtobBase64DecodeEmpty() 
+        {
+            string result = string.Empty.Atob();
+
+            result.Should().BeEmpty();
         }
     }
 }

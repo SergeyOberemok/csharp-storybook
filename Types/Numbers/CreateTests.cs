@@ -4,19 +4,20 @@ using Xunit.Abstractions;
 
 namespace CSharpStorybook.Types.Numbers
 {
-    public class ParseTests : TestBase
+    public class CreateTests : TestBase
     {
-        public ParseTests(ITestOutputHelper output) : base(output)
+        public CreateTests(ITestOutputHelper output) : base(output)
         {
         }
+
+        #region Int
 
         [Fact]
         public void TestIntParseString()
         {
             int number = _faker.Random.Number(1, 100);
-            string numberStr = number.ToString();
 
-            int result = int.Parse(numberStr);
+            int result = int.Parse(number.ToString());
 
             result.Should().Be(number);
         }
@@ -51,16 +52,14 @@ namespace CSharpStorybook.Types.Numbers
         [Fact]
         public void TestIntTryParseEmptyString()
         {
-            string numberStr = string.Empty;
-
-            bool isNumeric = int.TryParse(numberStr, out int number);
+            bool isNumeric = int.TryParse(string.Empty, out int number);
 
             Assert.False(isNumeric);
             number.Should().Be(0);
         }
 
         [Fact]
-        public void TestIntTrypParseNull()
+        public void TestIntTryParseNull()
         {
             string numberStr = null;
 
@@ -69,6 +68,10 @@ namespace CSharpStorybook.Types.Numbers
             Assert.False(isNumeric);
             number.Should().Be(0);
         }
+
+        #endregion Int
+
+        #region Decimal
 
         [Fact]
         public void TestDecimalTryParseIntString()
@@ -80,5 +83,31 @@ namespace CSharpStorybook.Types.Numbers
             Assert.True(isNumeric);
             number.Should().BeGreaterThan(0).And.BeLessThan(101);
         }
+
+        #endregion Decimal
+
+        #region Long
+
+        [Fact]
+        public void TestLongTryParseLongString()
+        {
+            int number = _faker.Random.Number();
+
+            bool isNumeric = long.TryParse(number.ToString(), out long result);
+
+            Assert.True(isNumeric);
+            number.Should().Be(number);
+        }
+
+        [Fact]
+        public void TestLongTryParseEmptyString()
+        {
+            bool isNumeric = int.TryParse(string.Empty, out int number);
+
+            Assert.False(isNumeric);
+            number.Should().Be(0);
+        }
+
+        #endregion Long
     }
 }

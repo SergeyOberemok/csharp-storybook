@@ -3,7 +3,7 @@ using Xunit;
 
 namespace CSharpStorybook.Types.Tuples
 {
-    public class TupleTests
+    public class CreateTests
     {
         [Fact]
         public void TestTupleGettingValues()
